@@ -1,0 +1,39 @@
+using System;
+using System.Net.Http;
+using System.Threading.Tasks;
+
+class Program
+{
+    static async Task Main(string[] args)
+    {
+        string email = "vikneszero@gmail.com";
+
+        string apiUrl = "https://career.netizenexperience.com/api/resume";
+
+        using (HttpClient client = new HttpClient())
+        {
+            try
+            {
+                string requestUrl = $"{apiUrl}?email={email}";
+
+                HttpResponseMessage response = await client.GetAsync(requestUrl);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    
+                    Console.WriteLine("Response:");
+                    Console.WriteLine(responseBody);
+                }
+                else
+                {
+                    Console.WriteLine($"Error: {response.StatusCode} - {response.ReasonPhrase}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
+        }
+    }
+}
