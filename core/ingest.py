@@ -1,20 +1,29 @@
-import json
-import requests
+import praw
 
-def load_sample_data(path="data/sample_posts.json"):
-    with open(path, "r") as f:
-        return json.load(f)
+# You will fill these in
+REDDIT_CLIENT_ID = "your_client_id"
+REDDIT_CLIENT_SECRET = "your_client_secret"
+REDDIT_USER_AGENT = "social-intelligence-engine by vic"
 
 
-def fetch_reddit_mock():
+def fetch_reddit_posts(subreddit_name="technology", limit=20):
     """
-    Simple fallback mock fetch.
-    You can replace this with Reddit API later.
+    Fetch real posts from Reddit using PRAW
     """
-    return [
-        "AI is changing the world بسرعة",
-        "Python is amazing for data science",
-        "Stock market is very volatile today",
-        "OpenAI releases new model and it's powerful",
-        "Cybersecurity threats are increasing"
-    ]
+
+    reddit = praw.Reddit(
+        client_id=REDDIT_CLIENT_ID,
+        client_secret=REDDIT_CLIENT_SECRET,
+        user_agent=REDDIT_USER_AGENT
+    )
+
+    subreddit = reddit.subreddit(subreddit_name)
+
+    posts = []
+
+    for post in subreddit.hot(limit=limit):
+        text = f"{post.title} {post.selftext}".strip()
+        if text:
+            posts.append(text)
+
+    return posts
