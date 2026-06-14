@@ -1,4 +1,4 @@
-# 🧠 Social Intelligence Engine
+# 🧠 Social Intelligence Engine - A Streamlit version
 
 A lightweight AI-powered system that simulates social media intelligence by analyzing trends, sentiment, and topic momentum from social posts.
 
