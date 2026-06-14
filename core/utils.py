@@ -1,24 +1,53 @@
 import re
 from collections import Counter
 
-def clean_text(text: str):
+
+def clean_text(text):
     text = text.lower()
-    text = re.sub(r"[^a-z0-9\s]", "", text)
+
+    text = re.sub(
+        r"[^a-zA-Z0-9\s]",
+        "",
+        text
+    )
+
     return text
 
 
 def extract_keywords(posts):
-    words = []
 
-    for p in posts:
-        clean = clean_text(p)
-        words.extend(clean.split())
+    all_words = []
 
-    stopwords = set([
-        "the", "is", "and", "to", "a", "of", "in", "it", "this", "that",
-        "for", "on", "with", "as", "was", "are", "at"
-    ])
+    stopwords = {
+        "the",
+        "is",
+        "and",
+        "to",
+        "of",
+        "a",
+        "in",
+        "for",
+        "on",
+        "with",
+        "that",
+        "this",
+        "are",
+        "was",
+        "were",
+        "be"
+    }
 
-    filtered = [w for w in words if w not in stopwords and len(w) > 2]
+    for post in posts:
 
-    return Counter(filtered)
+        words = clean_text(post).split()
+
+        filtered = [
+            word
+            for word in words
+            if word not in stopwords
+            and len(word) > 2
+        ]
+
+        all_words.extend(filtered)
+
+    return Counter(all_words)
