@@ -21,3 +21,30 @@ A lightweight AI-powered system that simulates social media intelligence by anal
 
 ```bash
 pip install -r requirements.txt
+
+
+## Architecture
+
+                ┌──────────────────┐
+                │ React Dashboard  │
+                └────────┬─────────┘
+                         │
+                  FastAPI Gateway
+                         │
+ ┌──────────────┬────────┼────────┬──────────────┐
+ │              │        │        │              │
+ ▼              ▼        ▼        ▼              ▼
+
+Data       AI Engine   Trend   Reporting   Notification
+Collector             Engine     Engine       Engine
+
+ │
+ ▼
+
+PostgreSQL
+ │
+ ▼
+Redis Cache
+ │
+ ▼
+Vector Database
