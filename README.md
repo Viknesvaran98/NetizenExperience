@@ -15,14 +15,6 @@ A lightweight AI-powered system that simulates social media intelligence by anal
 - VADER Sentiment
 - Pandas / NumPy
 
----
-
-## 📦 Installation
-
-```bash
-pip install -r requirements.txt
-
-
 ## Architecture
 
                 ┌──────────────────┐
@@ -48,3 +40,9 @@ Redis Cache
  │
  ▼
 Vector Database
+
+---
+## 📦 Installation
+
+```bash
+pip install -r requirements.txt
