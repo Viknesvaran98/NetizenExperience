@@ -5,7 +5,7 @@ A lightweight AI-powered system that simulates social media intelligence by anal
 ## 🚀 Features
 - Social post ingestion (mock + optional Reddit API)
 - Sentiment analysis using VADER
-- Trend detection based on keyword frequency
+- Trend detection based on keyword bash
 - Intelligence scoring engine
 - Interactive dashboard (Streamlit)
 
