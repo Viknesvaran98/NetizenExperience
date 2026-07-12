@@ -15,32 +15,6 @@ A lightweight AI-powered system that simulates social media intelligence by anal
 - VADER Sentiment
 - Pandas / NumPy
 
-## Architecture
-
-                ┌──────────────────┐
-                │ React Dashboard  │
-                └────────┬─────────┘
-                         │
-                  FastAPI Gateway
-                         │
- ┌──────────────┬────────┼────────┬──────────────┐
- │              │        │        │              │
- ▼              ▼        ▼        ▼              ▼
-
-Data       AI Engine   Trend   Reporting   Notification
-Collector             Engine     Engine       Engine
-
- │
- ▼
-
-PostgreSQL
- │
- ▼
-Redis Cache
- │
- ▼
-Vector Database
-
 ---
 ## 📦 Installation
 
